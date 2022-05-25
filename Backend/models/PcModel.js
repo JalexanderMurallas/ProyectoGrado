@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const PcTemplates = new Schema({
+const PcTemplates = new mongoose.Schema({
     serialnumber:{
         type:String,
         required:true
-
     },
     brand:{
         type:String,
@@ -28,4 +27,5 @@ const PcTemplates = new Schema({
 })
 
 //export default model('PcDocument', PcTemplates);
-module.exports = PcTemplates;
+//module.exports = PcTemplates;
+module.exports = mongoose.model('PcDocument', PcTemplates);

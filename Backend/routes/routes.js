@@ -24,4 +24,4 @@ router.post('/signup', (request, response) => {
     })
 } )
 
-module.exports = router 
+module.exports = router;
