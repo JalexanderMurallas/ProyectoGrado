@@ -28,4 +28,4 @@ const PcTemplates = new mongoose.Schema({
 
 //export default model('PcDocument', PcTemplates);
 //module.exports = PcTemplates;
-module.exports = mongoose.model('PcDocument', PcTemplates);
+module.exports = mongoose.model('Inventario', PcTemplates);

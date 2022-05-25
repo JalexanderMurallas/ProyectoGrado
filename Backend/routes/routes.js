@@ -4,7 +4,7 @@ const express = require('express')
 const router = express.Router()
 const PcTemplatesCopy = require('../models/PcModel')
 
-router.post('/signup', (request, response) => {
+router.post('/', (request, response) => {
     const pcInfo = new PcTemplatesCopy({
         
         serialnumber:request.body.serialnumber,

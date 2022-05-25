@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const routesUrls = require('./routes/routes');
 const cors = require('cors');
 
-dotenv.config()
+dotenv.config();
 
 //linea agregada para evitar problemas al enviar datos
 app.use(express.urlencoded({extended: true}));
@@ -17,6 +17,6 @@ mongoose.connect(process.env.DATABASE_ACCESS, {useNewUrlParser: true, useUnified
 
 app.use(express.json());
 app.use(cors())
-app.use('/app', routesUrls)
+app.use('/api/equipos', routesUrls)
 
 app.listen(4000, () => console.log("Servidor activado"))
