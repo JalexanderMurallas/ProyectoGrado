@@ -14,12 +14,12 @@ router.get("/", (req, res) => res.send("Hello Word"));
 router.get("/get-users", userController.getUsers);
 router.get("/get-user/:id", userController.getUserById);
 router.put("/update-user/:id", userController.updateUser);
-router.post("/signup", userController.signup);
+router.post("/create-user", userController.signup);
 router.post("/signin", userController.signin);
 router.post("/tasks", userController.tasks);
 router.get("/tasks", userController.tasks);
 router.get("/private-tasks", verifyToken, userController.privatetasks); // imp
-router.delete("/delete-users/:id", userController.deleteUser);
+router.delete("/delete-user/:id", userController.deleteUser);
 
 //rutas PC
 router.post("/create-pc", verifyToken, pcController.crearPc);
