@@ -1,15 +1,19 @@
 const { Schema, model } = require("mongoose");
 
-//todos llevan required
+//Schema
 const userSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, "Campo requerido"],
+      required: [true, "El nombre es requerido"],
+      maxlength: [50, "El nombre no puede tener mas de 50 caracteres"],
+      minlength: [1, "El nombre debe contener al menos 1 caracteres"],
     },
     lastName: {
       type: String,
-      required: [true, "Campo requerido"],
+      required: [true, "El apellido es requerido"],
+      maxlength: [50, "El apellido no puede tener mas de 50 caracteres"],
+      minlength: [1, "El apellido debe contener al menos 1 caracteres"],
     },
     email: {
       type: String,
@@ -18,7 +22,7 @@ const userSchema = new Schema(
       maxlength: [100, "El correo no puede exceder 100 caracteres"],
       match: [
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        "El correo electrónico no tiene el formato adecuado",
+        "El correo no es valido, verifica tu correo",
       ],
     },
     password: String,

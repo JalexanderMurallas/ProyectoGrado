@@ -4,18 +4,26 @@ const PcSchema = new Schema(
   {
     brand: {
       type: String,
-      required: true,
+      required: [true, "Campo requerido"],
       uppercase: true,
     }, //brand
-    model: String, //model autoincre <--
+    model: {
+      type: String,
+      required: [true, "Campo requerido"],
+      uppercase: true,
+    }, //model autoincre <--
     serial: {
       type: String,
       unique: true,
-      required: true,
+      required: [true, "Campo requerido"],
       uppercase: true,
     }, //serial
     pcType: String, //type is a subDocument, sugerencia setType <---
-    location: String,
+    location: {
+      type: String,
+      required: [true, "Campo requerido"],
+      uppercase: true,
+    },
     cpu: String,
     RAMSize: String, //actual RAM size
     hdd: String,
