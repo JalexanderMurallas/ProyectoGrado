@@ -2,9 +2,21 @@ const { Schema, model } = require("mongoose");
 
 const PeripheralsSchema = new Schema(
   {
-    brand: String, //brand
-    model: String, //model
-    serial: String, //serial, may be required n uniqueo0
+    brand: {
+      type: String,
+      required: true,
+      uppercase: true,
+    }, //brand
+    model: {
+      type: String,
+      required: true,
+      uppercase: true,
+    }, //model
+    serial: {
+      type: String,
+      required: true,
+      uppercase: true,
+    }, //serial, may be required n uniqueo0
     periType: String, //type is a subDocument, sugerencia setType <---
     entryDate: Date,
     lowDate: Date,

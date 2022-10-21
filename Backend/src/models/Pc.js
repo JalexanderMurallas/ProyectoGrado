@@ -2,7 +2,11 @@ const { Schema, model } = require("mongoose");
 
 const PcSchema = new Schema(
   {
-    brand: String, //brand
+    brand: {
+      type: String,
+      required: true,
+      uppercase: true,
+    }, //brand
     model: String, //model autoincre <--
     serial: {
       type: String,
