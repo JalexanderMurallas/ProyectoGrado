@@ -13,7 +13,7 @@ exports.signup = async (req, res) => {
     //console.log(user);
     //res.send(user);
 
-    const token = jwt.sign({ _id: user._id }, process.env.COMINO);
+    const token = jwt.sign({ _id: user._id, _rol: user.rol }, process.env.COMINO);
     res.status(200).json({ token });
     //res.send({message: 'New user created'});
   } catch (error) {
@@ -41,7 +41,7 @@ exports.signin = async (req, res) => {
     if (user.password !== password)
       return res.status(401).send("La contraseña no coinside");
 
-    const token = jwt.sign({ _id: user._id }, process.env.COMINO);
+    const token = jwt.sign({ _id: user._id, _rol: user.rol }, process.env.COMINO);
 
     return res.status(200).json({ token });
   } catch (error) {
@@ -69,7 +69,7 @@ exports.updateUser = async (req, res) => {
   try {
     //creo obj para recibir cada attrib
     //const { name, lastName, email, password } = req.body;
-    const { name, lastName, email, password } = req.body;
+    const { name, lastName, rol, email, password } = req.body;
     let user = await User.findById(req.params.id); //llamar parametro id
 
     if (!user) {
@@ -78,6 +78,7 @@ exports.updateUser = async (req, res) => {
 
     user.name = name;
     user.lastName = lastName;
+    user.rol = rol;
     user.email = email;
     user.password = password;
 

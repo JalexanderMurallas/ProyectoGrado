@@ -17,7 +17,7 @@ function verifyToken(req, res, next) {
   req.userId = payload._id;
   next();
 
-  console.log(payload);
+  console.log(payload._rol);
 }
 
 module.exports = verifyToken;

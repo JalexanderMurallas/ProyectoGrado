@@ -11,6 +11,10 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Campo requerido"],
     },
+    rol: {
+      type: String,
+      required: [true, "Campo requerido"],
+    },
     email: {
       type: String,
       unique: [true, "E-mail duplicado requerido"],
