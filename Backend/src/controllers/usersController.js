@@ -41,7 +41,7 @@ exports.signin = async (req, res) => {
     if (user.password !== password)
       return res.status(401).send("La contraseña no coinside");
 
-    const token = jwt.sign({ _id: user._id, _rol: user.rol }, process.env.COMINO);
+    const token = jwt.sign({ _id: user._id, _rol: user.rol, _email: user.email }, process.env.COMINO);
 
     return res.status(200).json({ token });
   } catch (error) {

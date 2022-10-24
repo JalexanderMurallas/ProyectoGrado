@@ -15,9 +15,11 @@ function verifyToken(req, res, next) {
   const payload = jwt.verify(token, process.env.COMINO);
 
   req.userId = payload._id;
+
+  
   next();
 
-  console.log(payload._rol);
+  console.log(payload._email);
 }
 
 module.exports = verifyToken;
