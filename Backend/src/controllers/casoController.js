@@ -89,3 +89,25 @@ exports.anadirSeguimiento = async (req, res) => {
     }
   };
 
+  exports.cerrarCaso = async (req, res) => {
+    try {
+
+      let caso = await Caso.findById(req.params.id); //llamar parametro id
+  
+      if (!caso) {
+        res.status(404).json({ msg: "El Caso ingresado no existe " });
+      }
+      
+      console.log(caso);
+      caso.estado = 'CERRADO';
+       
+      caso = await Caso.findOneAndUpdate({ _id: req.params.id }, caso, {
+        new: true,
+      });
+      res.json(caso);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("hubo un error :(");
+    }
+  };
+

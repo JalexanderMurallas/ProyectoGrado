@@ -45,5 +45,6 @@ router.post("/create-caso", casoController.crearCaso);
 router.get("/get-casos", casoController.getCasos);
 router.put("/update-caso/:id", casoController.anadirSeguimiento);
 router.get("/get-caso/:id", casoController.getCasoById);
+router.get("/cerrar-caso/:id", casoController.cerrarCaso);
 
 module.exports = router;
