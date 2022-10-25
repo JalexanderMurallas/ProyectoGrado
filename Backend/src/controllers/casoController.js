@@ -28,8 +28,8 @@ exports.getCasos = async (req, res) => {
     try {
 
       let caso
-      let data = req.headers.authorization;
-      let token = emailToken(data);
+      console.log(req.userToken);
+      let token = req.userToken;
 
       if (token._rol==="Administrador") {
         caso = await Caso.find();

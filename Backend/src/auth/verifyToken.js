@@ -6,7 +6,7 @@ function verifyToken(req, res, next) {
     return res.status(401).send("Autorizacion denegada** >:(");
   }
 
-  const token = req.headers.authorization.split(" ")[1];
+  const token = req.headers.authoriCozation.split(" ")[1];
 
   if (token === "null") {
     return res.status(401).send("Autorizacion denegada** >:(");
@@ -14,9 +14,8 @@ function verifyToken(req, res, next) {
 
   const payload = jwt.verify(token, process.env.COMINO);
 
-  req.userId = payload._id;
+  req.userToken = payload;
 
-  
   next();
 
   console.log(payload._email);

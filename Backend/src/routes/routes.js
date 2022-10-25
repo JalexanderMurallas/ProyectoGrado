@@ -42,7 +42,7 @@ router.delete("/delete-Peripherals/:id", verifyToken, perisController.eliminarPe
 
 //Rutas usuario
 router.post("/create-caso", casoController.crearCaso);
-router.get("/get-casos", casoController.getCasos);
+router.get("/get-casos", verifyToken, casoController.getCasos);
 router.put("/update-caso/:id", casoController.anadirSeguimiento);
 router.get("/get-caso/:id", casoController.getCasoById);
 router.get("/cerrar-caso/:id", casoController.cerrarCaso);
