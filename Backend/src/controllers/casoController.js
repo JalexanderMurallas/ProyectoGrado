@@ -1,5 +1,4 @@
 const Caso = require("../models/caso"); //cambiar al final
-const emailToken = require("../auth/verifyUserToken");
 const jwt = require("jsonwebtoken");
 
 exports.crearCaso = async (req, res) => {
@@ -8,15 +7,10 @@ exports.crearCaso = async (req, res) => {
 
         let caso;
         caso = new Caso(req.body);
-        let data = req.headers.authorization;
-        console.log(data);
-        let emailt = emailToken(data);
-        console.log(emailt._id);
+        let emailt = req.userToken;
         caso.codigo=emailt._id;
         await caso.save();
         res.send(caso);
-
-        console.log(caso);
 
     } catch (error) {
         console.log(error);
@@ -28,9 +22,7 @@ exports.getCasos = async (req, res) => {
     try {
 
       let caso
-      console.log(req.userToken);
       let token = req.userToken;
-
       if (token._rol==="Administrador") {
         caso = await Caso.find();
         res.json(caso);
@@ -70,9 +62,7 @@ exports.anadirSeguimiento = async (req, res) => {
         res.status(404).json({ msg: "El Caso ingresado no existe " });
       }
       
-      let data = req.headers.authorization;
-      console.log(data);
-      let emailt = emailToken(data);
+      let emailt = req.userToken;
       console.log(emailt._email);
       caso.incidencia.push({
         email: emailt._email,
