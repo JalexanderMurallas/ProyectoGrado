@@ -10,22 +10,9 @@ exports.signup = async (req, res) => {
     user = new User(req.body);
     await user.save();
 
-    //console.log(user);
-    //res.send(user);
-
     const token = jwt.sign({ _id: user._id, _rol: user.rol }, process.env.COMINO);
     res.status(200).json({ token });
-    //res.send({message: 'New user created'});
-  } catch (error) {
-    console.log(error);
-    res.status(500).send("hubo un error :(");
-  }
-};
 
-exports.getUsers = async (req, res) => {
-  try {
-    let user = await User.find();
-    res.json(user);
   } catch (error) {
     console.log(error);
     res.status(500).send("hubo un error :(");
@@ -44,6 +31,16 @@ exports.signin = async (req, res) => {
     const token = jwt.sign({ _id: user._id, _rol: user.rol, _email: user.email }, process.env.COMINO);
 
     return res.status(200).json({ token });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("hubo un error :(");
+  }
+};
+
+exports.getUsers = async (req, res) => {
+  try {
+    let user = await User.find();
+    res.json(user);
   } catch (error) {
     console.log(error);
     res.status(500).send("hubo un error :(");
