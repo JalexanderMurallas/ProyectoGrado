@@ -93,8 +93,7 @@ exports.anadirSeguimiento = async (req, res) => {
       if (!caso) {
         res.status(404).json({ msg: "El Caso ingresado no existe " });
       }
-      
-      console.log(caso);
+     
       caso.estado = 'CERRADO';
        
       caso = await Caso.findOneAndUpdate({ _id: req.params.id }, caso, {

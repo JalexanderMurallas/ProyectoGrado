@@ -1,15 +1,14 @@
-const Pc = require("../models/Pc"); //cambiar al final
+const Pc = require("../models/Pc");
 
 exports.crearPc = async (req, res) => {
 
     try {
 
-        let pc;
-        //creamos nuestro producto
-        pc = new Pc(req.body);
-
+        //guardamos el PC que llega en el body en la variable pc
+        let pc = new Pc(req.body);
+        //guardamos el PC en la base de datos
         await pc.save();
-
+        //Enviamos resultado del pc al usuario que realiza la peticion
         res.send(pc);
 
     } catch (error) {
@@ -33,14 +32,12 @@ exports.obtenerPcs = async (req, res) => {
 exports.actualizarPc = async (req, res) => {
     try {
 
-        //creo obj 
-        //const { nombre, categoria, ubicacion, precio } = req.body;
         const { model, brand, serial, pcType,
             location, cpu, RAMSize, hdd, entryDate, lowDate, lastMaintenance } = req.body;
-        let pc = await Pc.findById(req.params.id); //llamar parametro id
+        let pc = await Pc.findById(req.params.id); 
 
         if (!pc) {
-            res.status(404).json({ msg: 'No existe el producto' })
+            res.status(404).json({ msg: 'No existe el PC' })
         }
 
         pc.model = model;
@@ -68,7 +65,7 @@ exports.obtenerPc = async (req, res) => {
         let pc = await Pc.findById(req.params.id);
 
         if (!pc) {
-            res.status(404).json({ msg: 'No existe el producto' })
+            res.status(404).json({ msg: 'No existe el PC' })
         }
 
         res.json(pc);
@@ -84,7 +81,7 @@ exports.eliminarPc = async (req, res) => {
         let pc = await Pc.findById(req.params.id);
 
         if (!pc) {
-            res.status(404).json({ msg: 'No existe el producto' })
+            res.status(404).json({ msg: 'No existe el PC' })
         }
 
         await Pc.findOneAndRemove({ _id: req.params.id })

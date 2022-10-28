@@ -6,14 +6,10 @@ exports.createPeris = async (req, res) => {
     try {
         let peripheral = new Peripheral(req.body);
 
-        //creamos el usuario
         await peripheral.save();
 
         console.log(peripheral);
         res.send(peripheral);
-
-        //const token = jwt.sign({_id: peris._id}, process.env.COMINO);
-        //res.status(200).json({token});
 
     } catch (error) {
         console.log(error);
@@ -38,13 +34,11 @@ exports.obtenerPeris = async (req, res) => {
 exports.actualizarPeris = async (req, res) => {
     try {
 
-        //creo obj 
-        //const { nombre, categoria, ubicacion, precio } = req.body;
         const { brand, model, serial, periType, entryDate, lowDate } = req.body;
-        let peripheral = await Peripheral.findById(req.params.id); //llamar parametro id
+        let peripheral = await Peripheral.findById(req.params.id);
 
         if (!peripheral) {
-            res.status(404).json({ msg: 'No existe el producto' })
+            res.status(404).json({ msg: 'No existe el Perisferico' })
         }
 
         peripheral.brand = brand;
