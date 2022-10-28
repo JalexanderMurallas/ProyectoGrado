@@ -1,5 +1,4 @@
 const Caso = require("../models/caso"); //cambiar al final
-const jwt = require("jsonwebtoken");
 
 exports.crearCaso = async (req, res) => {
 
@@ -7,14 +6,22 @@ exports.crearCaso = async (req, res) => {
 
         let caso;
         caso = new Caso(req.body);
-        let emailt = req.userToken;
-        caso.codigo=emailt._id;
+        if (!caso) {
+          return res.status(404).json({ msg: "Error, caso vacio" });
+        }
+        let usert = req.userToken;
+
+        if (!usert) {
+          return res.status(404).json({ msg: "Error, Usuario no autenticado" });
+        }
+
+        caso.codigo=usert._id;
         await caso.save();
         res.send(caso);
 
     } catch (error) {
         console.log(error);
-        res.status(500).send('ha ocurrido un error!');
+        res.status(500).send('Ha ocurrido un error!');
     }
 }
 
@@ -27,7 +34,7 @@ exports.getCasos = async (req, res) => {
         caso = await Caso.find();
         res.json(caso);
       } else {
-        let caso = await Caso.find({"codigo":token._id});
+        caso = await Caso.find({"codigo":token._id});
         res.json(caso);
       }
 
@@ -62,10 +69,9 @@ exports.anadirSeguimiento = async (req, res) => {
         res.status(404).json({ msg: "El Caso ingresado no existe " });
       }
       
-      let emailt = req.userToken;
-      console.log(emailt._email);
+      let usert = req.userToken;
       caso.incidencia.push({
-        email: emailt._email,
+        email: usert._email,
         mensaje: mensaje
        });
        
