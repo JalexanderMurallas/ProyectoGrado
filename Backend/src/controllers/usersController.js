@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 require("dotenv").config({ path: "variables.env" });
+const {Base64} = require('js-base64');
 
 exports.signup = async (req, res) => {
   try {
@@ -8,7 +9,11 @@ exports.signup = async (req, res) => {
 
     //creamos el usuario
     user = new User(req.body);
+    console.log(user)
+    user.password=Base64.encode(user.password);
+    console.log(user)
     await user.save();
+    res.send(user);
 
   } catch (error) {
     console.log(error);
@@ -20,7 +25,10 @@ exports.signin = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-
+    console.log(user.password)
+    user.password=Base64.decode(user.password);
+    console.log(user.password)
+    console.log(password)
     if (!user) return res.status(401).send("El Email no existe");
     if (user.password !== password)
       return res.status(401).send("La contraseña no coinside");

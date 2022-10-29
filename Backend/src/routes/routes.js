@@ -23,7 +23,7 @@ router.delete("/delete-user/:id", verifyToken, userController.deleteUser);
 //rutas PC
 router.post("/create-pc", verifyToken, pcController.crearPc);
 router.get("/get-pcs", verifyToken, pcController.obtenerPcs);
-router.put("/update-pc/:id", verifyToken, pcController.actualizarPc);image.png
+router.put("/update-pc/:id", verifyToken, pcController.actualizarPc);
 router.get("/get-pcs/:id", verifyToken, pcController.obtenerPc);
 router.delete("/delete-pc/:id", verifyToken, pcController.eliminarPc);
 
