@@ -31,7 +31,7 @@ exports.signin = async (req, res) => {
     console.log(password)
     if (!user) return res.status(401).send("El Email no existe");
     if (user.password !== password)
-      return res.status(401).send("La contraseña no coinside");
+      return res.status(401).send("La contraseña no coincide");
 
     const token = jwt.sign({ _id: user._id, _rol: user.rol, _email: user.email }, process.env.COMINO);
 
@@ -70,7 +70,7 @@ exports.getUserById = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const { name, lastName, rol, email, password } = req.body;
-    let user = await User.findById(req.params.id); //llamar parametro id
+    let user = await User.findById(req.params.id);
 
     if (!user) {
       return res.status(404).json({ msg: "El usuario ingresado no existe " });
@@ -80,7 +80,7 @@ exports.updateUser = async (req, res) => {
     user.lastName = lastName;
     user.rol = rol;
     user.email = email;
-    user.password = password;
+    user.password = Base64.encode(password);
 
     user = await User.findOneAndUpdate({ _id: req.params.id }, user, {
       new: true,
