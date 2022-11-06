@@ -31,7 +31,7 @@ export class PeripheralsListComponent implements OnInit {
 
   eliminarPeripherals(id: any) {
     this._PeripheralsServicesService.eliminarPeripherals(id).subscribe(data => {
-      this.toastr.error('El PC fue eliminado con exito', 'PC Eliminado');
+      this.toastr.error('El periférico fue eliminado con exito', 'Periférico Eliminado');
       this.obtenerPeripherals();
     }, error => {
       console.log(error);

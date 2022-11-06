@@ -93,6 +93,7 @@ export class PCCreateComponent implements OnInit {
     if (this.id !== null) {
       this.titulo = 'editar PC';
       this._pcServicesService.obtenerPC(this.id).subscribe(data => {
+        console.log(data)
         this.pcForm.setValue({
           brand: data.brand,
           model: data.model,

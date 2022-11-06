@@ -21,12 +21,13 @@
                   <span>El Apellido del PC <strong>es Obligatorio</strong></span>
                 </div>
               </div>
-
-              <select class="form-select" formControlName="rol" aria-label="Default select example">
-                <option selected>Seleccione Rol</option>
-                <option value="Administrador">Administrador</option>
-                <option value="Usuario">Usuario</option>
-              </select>
+              <div>
+                <label>Rol del Usuario:</label>
+                <select class="form-select" formControlName="rol" aria-label="Default select example" placeholder="Apellidos">
+                  <option value="Administrador">Administrador</option>
+                  <option value="Usuario">Usuario</option>
+                </select>
+              </div>
               <br>
               <div class="text-danger"
                   *ngIf="usersForm.get('rol')?.hasError('required') && usersForm.get('rol')?.touched">

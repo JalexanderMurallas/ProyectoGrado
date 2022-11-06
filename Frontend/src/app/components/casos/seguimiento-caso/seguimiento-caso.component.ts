@@ -50,7 +50,7 @@ export class SeguimientoCasoComponent implements OnInit {
       this._casosServicesService.editarCaso(this.id, mensaje).subscribe(data => {
 
         this.toastr.info('Seguimiento añadido con Exito!!', 'Caso Actualizado!')
-        this.router.navigate(['']);
+        this.getCaso();
       }, error => {
         console.log(error);
         this.casosForm.reset();
@@ -59,6 +59,20 @@ export class SeguimientoCasoComponent implements OnInit {
     }
     console.log(mensaje);
 
+  }
+
+  cerrarCaso(){
+    if (this.id !== null) {
+     
+      this._casosServicesService.cerrarCaso(this.id).subscribe(data => {
+
+        this.toastr.info('El caso se ha cerrado con Exito!!', 'Caso Actualizado!')
+        this.getCaso();
+        this.router.navigate(['/list-casos']);
+      }, error => {
+          console.log(error);
+      })
+    }
   }
 
   getCaso() {

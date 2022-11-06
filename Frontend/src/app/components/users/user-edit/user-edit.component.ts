@@ -52,7 +52,7 @@ export class UserEditComponent implements OnInit {
       //editamos el producto
       this._usersServicesService.editarUser(this.id, user).subscribe(data => {
 
-        this.toastr.info('Perisferico actualizado con Exito!!', 'Perisferico Actualizado!')
+        this.toastr.info('Usuario actualizado con Exito!!', 'Usuario Actualizado!')
         this.router.navigate(['/list-users']);
       }, error => {
         console.log(error);
@@ -63,7 +63,7 @@ export class UserEditComponent implements OnInit {
       //Agregamos Producto
       console.log(user);
       this._usersServicesService.createuser(user).subscribe(data => {
-        this.toastr.success('Perisferico guardado con Exito!!', 'Perisferico registrado!');
+        this.toastr.success('Usuario guardado con Exito!!', 'Usuario registrado!');
         this.router.navigate(['/list-users']);
       }, error => {
         console.log(error);

@@ -29,7 +29,7 @@ export class UserListComponent implements OnInit {
 
   eliminarUser(id: any) {
     this._usersServicesService.deleteuser(id).subscribe(data => {
-      this.toastr.error('El PC fue eliminado con exito', 'PC Eliminado');
+      this.toastr.error('El Usuario fue eliminado con exito', 'Usuario Eliminado');
       this.obtenerUsers();
     }, error => {
       console.log(error);

@@ -49,7 +49,12 @@ export class ListCasosComponent implements OnInit {
   }
 
   eliminarCaso(id: any){
-    console.log(id);
+    this._casosServicesService.eliminarCaso(id).subscribe(data=>{
+      this.toastr.error('El Caso fue eliminado con exito', 'Caso Eliminado');
+      this.obtenerCasos();
+    }, error => {
+      console.log(error);
+    })
   }
 
   agregarCaso() {
@@ -64,6 +69,7 @@ export class ListCasosComponent implements OnInit {
     console.log(caso);
     this._casosServicesService.guardarCaso(caso).subscribe(data => {
       this.toastr.success('Caso guardado con Exito!!', 'Caso registrado!');
+      this.obtenerCasos();
     }, error => {
       console.log(error);
       this.casosForm.reset();

@@ -17,7 +17,7 @@ export class CasosServicesService {
   }
 
   eliminarCaso(id: string): Observable<any> {
-    return this.http.delete(environment.apiURL + '/delete-casos/' + id);
+    return this.http.delete(environment.apiURL + '/delete-caso/' + id);
   }
 
   guardarCaso(caso: Casos): Observable<any> {
@@ -31,4 +31,10 @@ export class CasosServicesService {
   editarCaso(id: string, mensaje: mensajes): Observable<mensajes[]> {
     return this.http.put<mensajes[]>(environment.apiURL + '/update-caso/' + id, mensaje);
   }
+
+  cerrarCaso(id: string): Observable<any> {
+    return this.http.get(environment.apiURL + '/cerrar-caso/'+ id);
+  }
+
+
 }

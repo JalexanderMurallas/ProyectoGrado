@@ -18,7 +18,7 @@
                 <input type="text" formControlName="model" class="form-control form-control-lg" placeholder="Modelo">
                 <div class="text-danger"
                   *ngIf="pcForm.get('model')?.hasError('required') && pcForm.get('model')?.touched">
-                  <span>El model del PC <strong>es Obligatorio</strong></span>
+                  <span>El Modelo del PC <strong>es Obligatorio</strong></span>
                 </div>
               </div>
               
@@ -27,7 +27,7 @@
                   placeholder="Serial">
                 <div class="text-danger"
                   *ngIf="pcForm.get('serial')?.hasError('required') && pcForm.get('serial')?.touched">
-                  <span>La serial del pc <strong>es Obligatoria</strong></span>
+                  <span>El Serial del pc <strong>es Obligatorio</strong></span>
                 </div>
               </div>
               <div class="mb-3">
@@ -41,21 +41,21 @@
                 <input type="text" formControlName="location" class="form-control form-control-lg" placeholder="Ubicacion">
                 <div class="text-danger"
                   *ngIf="pcForm.get('location')?.hasError('required') && pcForm.get('location')?.touched">
-                  <span>La Ubicacion del pc <strong>es Obligatorio</strong></span>
+                  <span>La Ubicacion del pc <strong>es Obligatoria</strong></span>
                 </div>
               </div>
               <div class="mb-3">
                 <input type="text" formControlName="cpu" class="form-control form-control-lg" placeholder="CPU">
                 <div class="text-danger"
                   *ngIf="pcForm.get('cpu')?.hasError('required') && pcForm.get('cpu')?.touched">
-                  <span>El CPU del pc <strong>es Obligatorio</strong></span>
+                  <span>La CPU del pc <strong>es Obligatoria</strong></span>
                 </div>
               </div>
               <div class="mb-3">
                 <input type="text" formControlName="RAMSize" class="form-control form-control-lg" placeholder="RAM">
                 <div class="text-danger"
                   *ngIf="pcForm.get('RAMSize')?.hasError('required') && pcForm.get('RAMSize')?.touched">
-                  <span>El RAM del pc <strong>es Obligatorio</strong></span>
+                  <span>La RAM del pc <strong>es Obligatoria</strong></span>
                 </div>
               </div>
               <div class="mb-3">
@@ -66,24 +66,24 @@
                 </div>
               </div>
               <div class="mb-3">
-                <input type="datetime" formControlName="entryDate" class="form-control form-control-lg" placeholder="Fecha Ingreso">
+                <input type="datetime" formControlName="entryDate" class="form-control form-control-lg" placeholder="Fecha Ingreso dd/mm/aaaa">
                 <div class="text-danger"
                   *ngIf="pcForm.get('entryDate')?.hasError('required') && pcForm.get('entryDate')?.touched">
-                  <span>El Fecha de Ingreso del PC <strong>es Obligatorio</strong></span>
+                  <span>La Fecha de Ingreso del PC <strong>es Obligatoria</strong></span>
                 </div>
               </div>
               <div class="mb-3">
-                <input type="datetime" formControlName="lowDate" class="form-control form-control-lg" placeholder="Fecha de Baja">
+                <input type="datetime" formControlName="lowDate" class="form-control form-control-lg" placeholder="Fecha de Baja dd/mm/aaaa o 0 si sigue en uso">
                 <div class="text-danger"
                   *ngIf="pcForm.get('lowDate')?.hasError('required') && pcForm.get('lowDate')?.touched">
-                  <span>El Fecha de Baja de PC del pc <strong>es Obligatorio</strong></span>
+                  <span>La Fecha de Baja de PC del pc <strong>es Obligatoria</strong></span>
                 </div>
               </div>
               <div class="mb-3">
-                <input type="datetime" formControlName="lastMaintenance" class="form-control form-control-lg" placeholder="Ultimo Mantenimiento">
+                <input type="datetime" formControlName="lastMaintenance" class="form-control form-control-lg" placeholder="Ultimo Mantenimiento dd/mm/aaaa">
                 <div class="text-danger"
                   *ngIf="pcForm.get('lastMaintenance')?.hasError('required') && pcForm.get('lastMaintenance')?.touched">
-                  <span>La Fecha del Ultimo Mantenimiento del pc <strong>es Obligatorio</strong></span>
+                  <span>La Fecha del Ultimo Mantenimiento del pc <strong>es Obligatoria</strong></span>
                 </div>
               </div>
               <div class="mb-3">

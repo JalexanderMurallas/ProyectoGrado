@@ -14,7 +14,7 @@ import { PeripheralsServicesService } from 'src/app/services/peripherals-service
 export class PeripheralsCreateComponent implements OnInit {
 
   peripheralsForm: FormGroup;
-  titulo = 'Crear Perisferico';
+  titulo = 'Crear Periférico';
   id: string | null;
 
   constructor(private fb: FormBuilder,
@@ -56,7 +56,7 @@ export class PeripheralsCreateComponent implements OnInit {
       //editamos el producto
       this._peripheralsServicesService.editarPeripherals(this.id, peripherals).subscribe(data => {
 
-        this.toastr.info('Perisferico actualizado con Exito!!', 'Perisferico Actualizado!')
+        this.toastr.info('Periférico actualizado con Exito!!', 'Periférico  Actualizado!')
         this.router.navigate(['/list-peripherals']);
       }, error => {
         console.log(error);
@@ -79,7 +79,7 @@ export class PeripheralsCreateComponent implements OnInit {
   esEditar() {
 
     if (this.id !== null) {
-      this.titulo = 'editar producto';
+      this.titulo = 'Editar Periféricos';
       this._peripheralsServicesService.obtenerPeripherals(this.id).subscribe(data => {
         this.peripheralsForm.setValue({
           brand: data.brand,

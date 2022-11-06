@@ -89,13 +89,12 @@ exports.anadirSeguimiento = async (req, res) => {
     try {
 
       let caso = await Caso.findById(req.params.id); //llamar parametro id
-  
+      console.log(caso)
       if (!caso) {
         res.status(404).json({ msg: "El Caso ingresado no existe " });
       }
-     
       caso.estado = 'CERRADO';
-       
+       console.log(caso)
       caso = await Caso.findOneAndUpdate({ _id: req.params.id }, caso, {
         new: true,
       });
@@ -105,4 +104,22 @@ exports.anadirSeguimiento = async (req, res) => {
       res.status(500).send("hubo un error :(");
     }
   };
+
+  exports.eliminarCaso = async (req, res) => {
+    try {
+        let caso = await Caso.findById(req.params.id);
+
+        if (!caso) {
+            res.status(404).json({ msg: 'No existe el Perisferico' })
+        }
+
+        //await peripheral.findOneAndRemove({ _id: req.params.id })
+        await Caso.findOneAndRemove({ _id: req.params.id });
+        res.json({ msg: 'Perisferico Eliminado eliminado con exito' });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('hubo un error :(');
+    }
+}
 

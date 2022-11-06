@@ -39,6 +39,7 @@ router.post("/create-caso", verifyToken, casoController.crearCaso);
 router.get("/get-casos", verifyToken, casoController.getCasos);
 router.put("/update-caso/:id", verifyToken, casoController.anadirSeguimiento);
 router.get("/get-caso/:id", verifyToken, casoController.getCasoById);
+router.delete("/delete-caso/:id", verifyToken, casoController.eliminarCaso);
 router.get("/cerrar-caso/:id", verifyToken, casoController.cerrarCaso);
 
 module.exports = router;
