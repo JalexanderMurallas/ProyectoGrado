@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 
@@ -13,9 +14,11 @@ export class SigninComponent implements OnInit {
     email: '',
     password: ''
   }
+  errores: string[]=[];
 
   constructor(private authServices: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -30,7 +33,10 @@ export class SigninComponent implements OnInit {
         localStorage.setItem('token', res.token);
         this.router.navigate(['/list-pc']);
 
-    }, err=>console.log(err)
+    }, err=>{
+      this.errores = err.error.errors as string[];
+      this.toastr.error('Usuario o contraseña Inválido', 'Error de autenticación');
+     } 
     )
   }
 

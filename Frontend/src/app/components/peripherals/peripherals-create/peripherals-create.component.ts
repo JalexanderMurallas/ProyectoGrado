@@ -61,6 +61,7 @@ export class PeripheralsCreateComponent implements OnInit {
       }, error => {
         console.log(error);
         this.peripheralsForm.reset();
+        this.toastr.error('Uno de los campos no fue llenado correctamente', 'Error al crear Periférico');
       })
 
     } else {
@@ -72,6 +73,7 @@ export class PeripheralsCreateComponent implements OnInit {
       }, error => {
         console.log(error);
         this.peripheralsForm.reset();
+        this.toastr.error('Uno de los campos no fue llenado correctamente', 'Error al crear Periférico');
       })
     }
   }

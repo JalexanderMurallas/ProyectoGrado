@@ -73,6 +73,7 @@ export class PCCreateComponent implements OnInit {
       }, error => {
         console.log(error);
         this.pcForm.reset();
+        this.toastr.error('Uno de los campos no fue llenado correctamente', 'Error al crear PC');
       })
 
     } else {
@@ -84,6 +85,7 @@ export class PCCreateComponent implements OnInit {
       }, error => {
         console.log(error);
         this.pcForm.reset();
+        this.toastr.error('Uno de los campos no fue llenado correctamente', 'Error al crear PC');
       })
     }
   }

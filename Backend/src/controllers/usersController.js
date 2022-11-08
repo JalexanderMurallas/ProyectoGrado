@@ -25,12 +25,9 @@ exports.signin = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    console.log(user.password)
-    user.password=Base64.decode(user.password);
-    console.log(user.password)
-    console.log(password)
-    if (!user) {return res.status(401).send("El Email no existe");}
-    if (user.password !== password){
+    let passwordencode=Base64.encode(password);
+    if (!user) return res.status(401).send("El Email no existe");
+    if (user.password !== passwordencode){
       return res.status(401).send("La contraseña no coincide");}
 
     const token = jwt.sign({ _id: user._id, _rol: user.rol, _email: user.email }, process.env.COMINO);

@@ -57,6 +57,7 @@ export class UserEditComponent implements OnInit {
       }, error => {
         console.log(error);
         this.usersForm.reset();
+        this.toastr.error('Uno de los campos no fue llenado correctamente', 'Error al crear Usuario');
       })
 
     } else {
@@ -68,6 +69,7 @@ export class UserEditComponent implements OnInit {
       }, error => {
         console.log(error);
         this.usersForm.reset();
+        this.toastr.error('Uno de los campos no fue llenado correctamente', 'Error al crear Usuario');
       })
     }
   }
